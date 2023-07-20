@@ -69,14 +69,6 @@ def test_convert_object_detection(
     helper_tc: TestCaseHelper,
     caplog: pytest.LogCaptureFixture,
 ):
-    # TODO: Fix xfail cases...
-    if output_format == "coco":
-        pytest.xfail()
-    elif (
-        output_format == "datumaro_binary" or output_format == "datumaro"
-    ) and input_format == "coco":
-        pytest.xfail()
-
     src_dir = osp.join(test_dir, "src")
     dst_dir = osp.join(test_dir, "dst")
 

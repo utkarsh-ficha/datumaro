@@ -8,6 +8,7 @@ import os.path as osp
 from enum import Enum, auto
 from itertools import chain, groupby
 from typing import List, Union
+import shutil
 
 import pycocotools.mask as mask_utils
 
@@ -758,7 +759,8 @@ class CocoExporter(Exporter):
 
                 if task_conv.is_empty() and (not self._tasks or self._patch):
                     if task == CocoTask.panoptic:
-                        os.rmdir(self._segmentation_dir)
+                        # os.rmdir(self._segmentation_dir)
+                        shutil.rmtree(self._segmentation_dir)
                     if self._patch:
                         if osp.isfile(ann_file):
                             # Remove subsets that became empty
